@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+    * {
+        font-family: 'Open Sans', sans-serif;
+    }
+    .game-modal {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+    }
+    .game-modal.show {
+        opacity: 1;
+        pointer-events: auto;
+        transition: opacity 0.4s 0.4s ease;
+    }
+
+    .word-display .letter {
+    width: 28px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #850042;
+}
+</style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-[url('images/background.avif')]"></body>
+
+    <!-- Game Modal -->
+    <div class="game-modal fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 flex items-center justify-center z-50">
+        <div class="content bg-white p-8 rounded-lg text-center shadow-lg max-w-sm w-full">
+            <img src="#" alt="gif" class="mx-auto mb-5 max-w-xs">
+            <h4 class="text-2xl font-semibold">Game Over!</h4>
+            <p class="text-lg font-medium mt-4 mb-8">The correct word was: <b class="text-green-500">rainbow</b></p>
+            <button class="play-again bg-[#850042] text-white py-3 px-6 rounded-md uppercase font-semibold hover:bg-[#241B2C]">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container flex items-end justify-between bg-white p-10 rounded-lg shadow-lg w-full max-w-4xl space-x-16">
+        <!-- Hangman Box -->
+        <div class="hangman-box text-center">
+            <img src="#" alt="hangman-img" class="select-none max-w-xs">
+            <h1 class="mt-5 text-xl font-semibold ">MEDICAL HANGMAN</h1>
+        </div>
+
+        <!-- Game Box -->
+        <div class="game-box text-center">
+            <ul class="word-display flex flex-wrap justify-center items-center space-x-2 mb-10">
+                <!-- Dynamically generated word display goes here -->
+            </ul>
+            <h4 class="hint-text text-lg font-medium mb-3 ">Hint: <b></b></h4>
+            <h4 class="guesses-text text-lg font-medium mb-8">Incorrect guesses: <b class="text-red-500"></b></h4>
+            <div class="keyboard flex flex-wrap justify-center space-x-1.5 mt-10">
+                <!-- Dynamically generated keyboard buttons go here -->
+            </div>
+        </div>
+    </div>
+<script src='scripts/word-list.js' defer></script>
+<script src='scripts/script.js' defer></script>
+
+</body>
+</html>
